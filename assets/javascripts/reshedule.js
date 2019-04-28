@@ -71,6 +71,8 @@ $(function () {
 				} else {
 					$t.css('left', ($t.data('left') + diff) + 'px');
 				}
+                		if ($t.hasClass('task_todo'))
+					return false;
 			});
         },
         stop: function (event, ui)
@@ -114,6 +116,8 @@ $(function () {
 				} else {
 					$t.css('left', ($t.data('left') + diff) + 'px');
 				}
+                		if ($t.hasClass('task_todo'))
+					return false;
 			});
 			task.each(function () {
 				$t.removeData('start_width');
