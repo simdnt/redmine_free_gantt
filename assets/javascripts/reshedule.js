@@ -60,12 +60,12 @@ $(function () {
 				var $t = $(this);
 				if (IsStartDateMoveMode) {
 					$t.css('width', ($t.data('start_width') - diff) + 'px');
-					if (!$t.hasClass("label")) {
+					if (!$t.hasClass("label") && !($t.hasClass("marker") && $t.hasClass("ending"))) {
 						$t.css('left', ($t.data('left') + diff) + 'px');
 					}
 				} else if(IsDueDateMoveMode) {
 					$t.css('width', ($t.data('start_width') + diff) + 'px');
-					if ($t.hasClass("label")) {
+					if ($t.hasClass("label") || ($t.hasClass("marker") && $t.hasClass("ending"))) {
 						$t.css('left', ($t.data('left') + diff) + 'px');
 					}
 				} else {
@@ -105,12 +105,12 @@ $(function () {
 				var $t = $(this);
 				if (IsStartDateMoveMode) {
 					$t.css('width', ($t.data('start_width') - diff) + 'px');
-					if (!$t.hasClass("label")) {
+					if (!$t.hasClass("label") && !($t.hasClass("marker") && $t.hasClass("ending"))) {
 						$t.css('left', ($t.data('left') + diff) + 'px');
 					}
 				} else if(IsDueDateMoveMode) {
 					$t.css('width', ($t.data('start_width') + diff) + 'px');
-					if ($t.hasClass("label")) {
+					if ($t.hasClass("label") || ($t.hasClass("marker") && $t.hasClass("ending"))) {
 						$t.css('left', ($t.data('left') + diff) + 'px');
 					}
 				} else {
