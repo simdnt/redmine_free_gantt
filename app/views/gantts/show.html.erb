@@ -476,10 +476,14 @@ function myFunction() {
   <%= javascript_include_tag 'raphael' %>
   <%= javascript_include_tag 'gantt' %>
   <%= javascript_include_tag 'jquery.layout-1.4.1', :plugin => 'free_gantt' %>
+  <%= javascript_include_tag 'jquery.layout.state.js', :plugin => 'free_gantt' %>
   <script>
+	$(window).unload(function(){ layoutState.save('myLayout') }); 
 	var layoutOptions = { };
+	var myLayout;
 	$(document).ready(function(){
-		$('#super_pane').layout( layoutOptions );
+		myLayout = $('#super_pane').layout( $.extend( layoutOptions, layoutState.load('myLayout') ) );
+	    myLayout.options.cookie.autoSave = true;
 	});
   </script>
 <% end %>
