@@ -428,9 +428,9 @@ var sticky;
 function setMyFunctionHelpers(){
   gArea = document.getElementById("super_pane");
   header = document.getElementById("gantt_header_div");
-  sticky = gArea.offsetTop + 2;
 }
 function myFunction() {
+  sticky = gArea.offsetTop + 1;
   if (window.pageYOffset >= sticky) {
     var nPos = Math.round(window.pageYOffset-sticky);
     header.style.cssText = "position:absolute;top: "+nPos+"px;padding:0px;";
