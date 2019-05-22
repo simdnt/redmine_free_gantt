@@ -9,7 +9,7 @@ Features:
  * resizable subject area.
  * moving and resizing issues in gantt
 
-jquery.layout-1.4.1.js and jquery.layout.state.js has to be placed manually under assets/javascripts.
+jquery.layout-1.4.1.js and jquery.layout.state.js have to be placed manually under assets/javascripts.
 custom field for status display has to be configured in source code.
 
-Running on Redimne 3.4.4
+Running on Redmine 3.4.4
