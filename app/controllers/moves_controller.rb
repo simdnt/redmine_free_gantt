@@ -2,7 +2,7 @@ require 'json'
 
 class MovesController < ApplicationController
   unloadable
-  before_filter :find_project, :authorize
+  before_action :find_project, :authorize
 
   def find_project
     @issue = Issue.find(params[:id])

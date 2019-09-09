@@ -6,8 +6,7 @@ module GanttPatch
     base.send(:include, InstanceMethods)
     base.class_eval do
       unloadable
-	  alias_method_chain :line_for_issue, :custom_text
-	  alias_method_chain :html_subject, :custom_width
+	  prepend InstanceMethods
 	end
   end
   module ClassMethods
@@ -73,14 +72,14 @@ module GanttPatch
 		end
 		return false
 	end
-    def line_for_issue_with_custom_text(issue, options)
+    def line_for_issue(issue, options)
       # Skip issues that don't have a due_before (due_date or version's due_date)
       if issue.is_a?(Issue) && issue.due_before
         label = issue.status.name.dup
         unless issue.disabled_core_fields.include?('done_ratio')
           label << " #{issue.done_ratio}%"
         end
-	    labelValueCustomField = issue.custom_values.find{ |i| i.custom_field_id == 1 }
+	    labelValueCustomField = issue.custom_values.find{ |i| i.custom_field_id == 81 }
 		if not labelValueCustomField.nil? and labelValueCustomField.value != ""
 			label = issue.assigned_to.to_s + " " + labelValueCustomField.value
 		else
@@ -90,7 +89,7 @@ module GanttPatch
         line(issue.start_date, issue.due_before, issue.done_ratio, markers, label, options, issue)
       end
 	end
-	def html_subject_with_custom_width(params, subject, object)	
+	def html_subject(params, subject, object)	
       style = "position: absolute;top:#{params[:top]}px;left:#{params[:indent]}px;"
       style << "right:#{params[:indent]/params[:subject_width]}%;" if params[:subject_width]
       content = html_subject_content(object) || subject

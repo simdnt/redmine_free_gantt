@@ -16,9 +16,9 @@ $(function () {
         grid: [day_width, 0],
         start: function (event, ui)
         {
-			if (Math.abs(event.pageX - $(this).offset().left)  <= 3) {
+			if (Math.abs(event.pageX - $(this).offset().left)  <= 2) {
 				$(this).data('move_mode', 'start_date');
-			} else if(Math.abs(event.pageX - ($(this).offset().left + $(this).width())) <= 3) {
+			} else if(Math.abs(event.pageX - ($(this).offset().left + $(this).width())) <= 2) {
 				$(this).data('move_mode', 'due_date'); 
 			} else {
 				$(this).data('move_mode', 'both_date');
@@ -71,7 +71,7 @@ $(function () {
 				} else {
 					$t.css('left', ($t.data('left') + diff) + 'px');
 				}
-                		if ($t.hasClass('task_todo'))
+				if ($t.hasClass('task_todo'))
 					return false;
 			});
         },
@@ -116,7 +116,7 @@ $(function () {
 				} else {
 					$t.css('left', ($t.data('left') + diff) + 'px');
 				}
-                		if ($t.hasClass('task_todo'))
+				if ($t.hasClass('task_todo'))
 					return false;
 			});
 			task.each(function () {
