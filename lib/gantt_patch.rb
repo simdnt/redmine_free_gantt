@@ -2,16 +2,13 @@ require_dependency 'redmine/helpers/gantt'
 
 module GanttPatch
   def self.included(base)
-    base.extend(ClassMethods)
     base.send(:include, InstanceMethods)
     base.class_eval do
       unloadable
-	  prepend InstanceMethods
+	  prepend OverrideMethods
 	end
   end
-  module ClassMethods
-  end
-  module InstanceMethods  
+  module InstanceMethods
     def isholiday(date)
 		if date.mday == 1 && date.mon == 1
 			return true
@@ -72,6 +69,8 @@ module GanttPatch
 		end
 		return false
 	end
+  end
+  module OverrideMethods
     def line_for_issue(issue, options)
       # Skip issues that don't have a due_before (due_date or version's due_date)
       if issue.is_a?(Issue) && issue.due_before
