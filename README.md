@@ -10,6 +10,6 @@ Features:
  * moving and resizing issues in gantt
 
 jquery.layout-1.4.1.js and jquery.layout.state.js have to be placed manually under assets/javascripts.
-custom field for status display has to be configured in source code.
+custom field for status display has to be configured in source code (search for "i.custom_field_id == 81").
 
 Running on Redmine 4.0.4
